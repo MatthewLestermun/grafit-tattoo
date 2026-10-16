@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Графит — тату-студия</title>
+  <meta name="description" content="Тату-студия «Графит»: графика, реализм, минимализм и блэкворк. Калькулятор стоимости, бесплатная консультация, онлайн-запись.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="container header__in">
+      <a href="#top" class="logo"><span class="logo__mark">✦</span> ГРАФИТ</a>
+      <nav class="nav" id="nav">
+        <a href="#works">Работы</a>
+        <a href="#masters">Мастера</a>
+        <a href="#calc">Стоимость</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#faq">Вопросы</a>
+      </nav>
+      <button class="btn btn--light btn--sm" type="button" data-book>Записаться</button>
+      <button class="burger" id="burger" type="button" aria-label="Меню"><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- Первый экран -->
+    <section class="hero">
+      <div class="hero__grid"></div>
+      <canvas id="stars" aria-hidden="true"></canvas>
+      <div class="container hero__in">
+        <button class="badge" type="button" data-book><b>Новое</b> Свободные окна на ноябрь ↗</button>
+        <h1 class="grad">Тату, которое<br>останется с вами<br>навсегда</h1>
+        <p class="hero__lead">Графика, реализм, минимализм и блэкворк. Рисуем эскиз под вас, работаем стерильно и честно называем цену до начала сеанса.</p>
+        <div class="hero__row">
+          <button class="btn btn--light" type="button" data-book>Бесплатная консультация <span>↗</span></button>
+          <a class="btn btn--glass" href="#works">Смотреть работы</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Бегущая строка стилей -->
+    <div class="marquee" aria-label="Стили">
+      <div class="marquee__track" id="marquee"></div>
+    </div>
+
+    <!-- Стили -->
+    <section class="section" id="styles">
+      <div class="container">
+        <p class="pill">✦ Стили</p>
+        <h2 class="grad">Любой стиль —<br>одинаково сильно</h2>
+        <p class="sub">Нажмите на стиль, чтобы посмотреть работы в нём.</p>
+        <div class="bento" id="bento"></div>
+      </div>
+    </section>
+
+    <!-- Работы -->
+    <section class="section" id="works">
+      <div class="container">
+        <div class="head-row">
+          <div>
+            <p class="pill">✦ Портфолио</p>
+            <h2 class="grad">Наши работы</h2>
+          </div>
+          <div class="tabs" id="work-tabs"></div>
+        </div>
+        <div class="gallery" id="gallery"></div>
+      </div>
+    </section>
+
+    <!-- Цифры -->
+    <section class="section results">
+      <div class="container results__in">
+        <div>
+          <p class="pill">✦ О студии</p>
+          <h2 class="grad">Результат,<br>которому доверяют</h2>
+          <p class="sub">С 2017 года сделали больше тысячи татуировок. Половина гостей приходит по рекомендации друзей.</p>
+        </div>
+        <div class="stats">
+          <div class="stat glass"><b data-count="1200" data-suffix="+">0</b><span>татуировок</span></div>
+          <div class="stat glass"><b data-count="9">0</b><span>лет работы</span></div>
+          <div class="stat glass"><b data-count="4.9" data-decimals="1" data-suffix=" ★">0</b><span>на Яндекс Картах</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Мастера -->
+    <section class="section" id="masters">
+      <div class="container">
+        <p class="pill">✦ Команда</p>
+        <h2 class="grad">Мастера студии</h2>
+        <p class="sub">Нажмите на мастера, чтобы посмотреть его работы и записаться.</p>
+        <div class="masters" id="masters-list"></div>
+      </div>
+    </section>
+
+    <!-- Калькулятор -->
+    <section class="section" id="calc">
+      <div class="container calc">
+        <div class="calc__left">
+          <p class="pill">✦ Стоимость</p>
+          <h2 class="grad">Посчитайте<br>цену за минуту</h2>
+          <p class="sub">Это примерная стоимость. Точную назовёт мастер на бесплатной консультации, когда увидит эскиз.</p>
+
+          <p class="q">Размер</p>
+          <div class="chips" id="c-size"></div>
+          <p class="q">Место</p>
+          <div class="chips" id="c-place"></div>
+          <p class="q">Цвет</p>
+          <div class="chips" id="c-color"></div>
+          <p class="q">Детализация <span id="c-detail-val">средняя</span></p>
+          <input type="range" id="c-detail" min="0" max="2" step="1" value="1" aria-label="Детализация">
+        </div>
+        <div class="calc__result glass">
+          <span class="mono">примерная стоимость</span>
+          <b id="c-price">—</b>
+          <p id="c-time">—</p>
+          <ul id="c-incl"><li>эскиз под вас бесплатно</li><li>одноразовые иглы и плёнка</li><li>крем и инструкция по уходу</li><li>бесплатная коррекция через месяц</li></ul>
+          <button class="btn btn--light btn--wide" type="button" id="c-book">Записаться с этим расчётом <span>↗</span></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Тарифы -->
+    <section class="section">
+      <div class="container">
+        <p class="pill">✦ Цены</p>
+        <h2 class="grad">Понятные цены<br>для любой идеи</h2>
+        <div class="plans">
+          <div class="plan glass">
+            <span class="mono">мини</span>
+            <b>от 3 000 ₽</b>
+            <p>Надписи, символы и небольшие рисунки до 5 см.</p>
+            <ul><li>1 сеанс до часа</li><li>эскиз в подарок</li><li>коррекция бесплатно</li></ul>
+            <button class="btn btn--glass btn--wide" type="button" data-book data-plan="Мини-тату">Выбрать</button>
+          </div>
+          <div class="plan plan--hot">
+            <span class="mono">популярное</span>
+            <b>от 8 000 ₽</b>
+            <p>Средние работы на руку, ногу или лопатку.</p>
+            <ul><li>1–2 сеанса</li><li>индивидуальный эскиз</li><li>коррекция бесплатно</li></ul>
+            <button class="btn btn--dark btn--wide" type="button" data-book data-plan="Средняя работа">Выбрать</button>
+          </div>
+          <div class="plan glass">
+            <span class="mono">крупные работы</span>
+            <b>от 6 000 ₽ / сеанс</b>
+            <p>Рукав, спина, перекрытие старых тату.</p>
+            <ul><li>оплата по сеансам</li><li>план работы на старте</li><li>скидка на каждый 5-й сеанс</li></ul>
+            <button class="btn btn--glass btn--wide" type="button" data-book data-plan="Крупная работа">Выбрать</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section class="section" id="reviews">
+      <div class="container">
+        <div class="head-row">
+          <div>
+            <p class="pill">✦ Отзывы</p>
+            <h2 class="grad">Что говорят гости</h2>
+          </div>
+          <div class="arrows">
+            <button type="button" id="rev-prev" aria-label="Назад">←</button>
+            <button type="button" id="rev-next" aria-label="Вперёд">→</button>
+          </div>
+        </div>
+        <div class="reviews" id="reviews-list"></div>
+      </div>
+    </section>
+
+    <!-- Вопросы -->
+    <section class="section" id="faq">
+      <div class="container faq">
+        <div>
+          <p class="pill">✦ Вопросы</p>
+          <h2 class="grad">Отвечаем<br>на главное</h2>
+          <p class="sub">Не нашли ответ? Задайте вопрос на консультации — это бесплатно.</p>
+          <button class="btn btn--glass" type="button" data-book>Задать вопрос мастеру</button>
+        </div>
+        <div class="faq__list" id="faq-list"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" id="contacts">
+    <div class="container footer__top">
+      <div>
+        <a href="#top" class="logo"><span class="logo__mark">✦</span> ГРАФИТ</a>
+        <p class="sub">Тату-студия. Рисуем то, что останется с вами навсегда.</p>
+        <button class="btn btn--light btn--sm" type="button" data-book>Записаться</button>
+      </div>
+      <div><h4>Разделы</h4><a href="#works">Работы</a><a href="#masters">Мастера</a><a href="#calc">Стоимость</a><a href="#faq">Вопросы</a></div>
+      <div><h4>Стили</h4><div id="footer-styles"></div></div>
+      <div><h4>Контакты</h4><p>ул. Литейная, 7</p><a href="tel:+70000000000">+7 (000) 000-00-00</a><p>Ежедневно 11:00–21:00</p></div>
+    </div>
+    <div class="footer__word">ГРАФИТ</div>
+    <div class="container footer__bottom"><span>© 2026 «Графит». Сайт-пример, данные условные.</span><a href="#top">Наверх ↑</a></div>
+  </footer>
+
+  <!-- Мастер -->
+  <div class="modal" id="master-modal" aria-hidden="true">
+    <div class="modal__box modal__box--wide">
+      <button class="modal__close" type="button" data-close aria-label="Закрыть">×</button>
+      <div class="mm">
+        <img id="mm-img" src="" alt="">
+        <div>
+          <span class="mono" id="mm-style"></span>
+          <h3 id="mm-name"></h3>
+          <p id="mm-bio"></p>
+          <div class="mm__works" id="mm-works"></div>
+          <button class="btn btn--light" type="button" id="mm-book">Записаться к мастеру <span>↗</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Запись -->
+  <div class="modal" id="book-modal" aria-hidden="true">
+    <div class="modal__box">
+      <button class="modal__close" type="button" data-close aria-label="Закрыть">×</button>
+      <form id="book-form" novalidate>
+        <span class="mono">бесплатная консультация</span>
+        <h3>Расскажите об идее</h3>
+        <p class="q">Мастер</p>
+        <div class="chips" id="b-master"></div>
+        <p class="q">Стиль</p>
+        <div class="chips" id="b-style"></div>
+        <label class="field">Идея
+          <textarea id="b-idea" rows="3" placeholder="Например: лев в графике на предплечье, 15 см"></textarea>
+        </label>
+        <p class="q">Удобный день</p>
+        <div class="chips" id="b-day"></div>
+        <div class="row2">
+          <label class="field">Имя<input id="b-name" type="text" placeholder="Как к вам обращаться"></label>
+          <label class="field">Телефон<input id="b-phone" type="tel" placeholder="+7 900 000-00-00"></label>
+        </div>
+        <p class="error" id="b-error"></p>
+        <button class="btn btn--light btn--wide" type="submit">Отправить заявку <span>↗</span></button>
+        <p class="hint">Демо-версия сайта: заявка никуда не отправляется.</p>
+      </form>
+      <div class="done" id="book-done">
+        <div class="done__icon">✦</div>
+        <h3>Заявка принята</h3>
+        <p id="b-summary"></p>
+        <button class="btn btn--light" type="button" data-close>Отлично</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Просмотр фото -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox__close" type="button" data-close aria-label="Закрыть">×</button>
+    <button class="lightbox__nav lightbox__nav--prev" type="button" id="lb-prev" aria-label="Назад">←</button>
+    <figure><img id="lb-img" src="" alt=""><figcaption id="lb-cap"></figcaption></figure>
+    <button class="lightbox__nav lightbox__nav--next" type="button" id="lb-next" aria-label="Вперёд">→</button>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/vendor/three.min.js"></script>
+  <script src="js/scene.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
